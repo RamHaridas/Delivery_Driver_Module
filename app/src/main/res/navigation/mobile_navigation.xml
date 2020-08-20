@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.whitehorse.deliverydriver.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+            app:destination="@id/nav_home_second" />
+        <action
+            android:id="@+id/action_Home_to_available_orders"
+            app:destination="@+id/nav_orders"/>
+        <action
+            android:id="@+id/action_home_to_details"
+            app:destination="@id/nav_details"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_home_second"
+        android:name="com.whitehorse.deliverydriver.ui.home.AvailableOrdersFragment"
+        android:label="@string/home_second"
+        tools:layout="@layout/fragment_available_orders">
+        <action
+            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
+            app:destination="@id/nav_home" />
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.whitehorse.deliverydriver.ui.gallery.GalleryFragment"
+        android:label="Delivery History"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.whitehorse.deliverydriver.ui.settings.ChangePassword"
+        android:label="Change password"
+        tools:layout="@layout/fragment_change_password" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_help"
+        android:name="com.whitehorse.deliverydriver.ui.help.HelpFragment"
+        android:label="Help"
+        tools:layout="@layout/fragment_help"/>
+
+    <fragment
+        android:id="@+id/nav_orders"
+        android:name="com.whitehorse.deliverydriver.ui.home.AvailableOrdersFragment"
+        android:label="ORDERS"
+        tools:layout="@layout/fragment_available_orders"/>
+
+    <fragment
+        android:id="@+id/nav_details"
+        android:name="com.whitehorse.deliverydriver.ui.home.OrderDetailsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_order_details">
+
+        <action android:id="@+id/action_details_to_map"
+            app:destination="@id/nav_map"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.whitehorse.deliverydriver.ui.home.MapFragment"
+        android:label="Route"
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/map_to_details"
+            app:destination="@+id/nav_details"/>
+        <action
+            android:id="@+id/action_map_to_home"
+            app:destination="@+id/nav_home"/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_info"
+        android:name="com.whitehorse.deliverydriver.InfoFragment"
+        tools:layout="@layout/fragment_info"
+        android:label="About us"/>
+</navigation>
